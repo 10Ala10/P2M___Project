@@ -7,9 +7,18 @@ public class Fruit : MonoBehaviour
     public GameObject sliced;
     public GameObject[] fruits;
     private Rigidbody fruitRigidbody;
-    public int nbrFruit = 5;
+    public int totalFruit = 7;
+    public static int nbrFruit = 7;
     private Collider fruitCollider;
-    int i = 0;
+    public static int i = 0;
+    public int[] memo = new int[1000];
+    void fill_n()
+    {
+        for (int i = 0; i <= memo.Length; ++i)
+        {
+            memo[i] = 0;
+        }
+    }
     private ParticleSystem juiceEffect;
 
     public int points = 1;
@@ -19,6 +28,7 @@ public class Fruit : MonoBehaviour
         fruitRigidbody = GetComponent<Rigidbody>();
         fruitCollider = GetComponent<Collider>();
         juiceEffect = GetComponentInChildren<ParticleSystem>();
+        fill_n();
     }
 
     private void Slice(Vector3 direction, Vector3 position, float force)
@@ -46,10 +56,7 @@ public class Fruit : MonoBehaviour
             slice.AddForceAtPosition(direction * force, position, ForceMode.Impulse);
         }
     }
-    void increment(ref int i)
-    {
-        ++i;
-    }
+
     private void OnTriggerEnter(Collider other)
     {
 
@@ -57,15 +64,39 @@ public class Fruit : MonoBehaviour
         {
             Blade blade = other.GetComponent<Blade>();
             Slice(blade.direction, blade.transform.position, blade.sliceForce);
-            increment(ref i);
-            Debug.Log(i);
+            --nbrFruit;
+            Debug.Log(nbrFruit);
         }
+        ///
+        computerTurn();
     }
 
-    // void computerTurn()
-    // {
-    //     Vector3 direction = new Vector3(9.59f, 0f, 0f);
-    //     Slice(direction, direction, 25f);
-    // }
+    void computerTurn()
+    {
+        int nbrChoosenComputer = best_choise(nbrFruit, false);
+        Debug.Log(nbrChoosenComputer);
+        // Vector3 direction = new Vector3(9.59f, 0f, 0f);
+        // Slice(direction, direction, 25f);
+    }
+    int best_choise(int rest, bool player_turn)
+    {
+        if (rest == 1u)
+        {
+            return -1;
+        }
+        if (memo[rest] == 0)
+        {
+            memo[rest] = -1;
+            for (int take = 1; take <= 3; ++take)
+            {
+                if (best_choise(rest - take, !player_turn) == -1 && rest - take > 0)
+                {
+                    memo[rest] = take;
+                    break;
+                }
+            }
+        }
+        return memo[rest];
+    }
 
 }
