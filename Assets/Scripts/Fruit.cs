@@ -62,15 +62,17 @@ public class Fruit : MonoBehaviour
         sliced.SetActive(true);
         juiceEffect.Play();
         // Rotate based on the slice angle
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        sliced.transform.rotation = Quaternion.Euler(0f, 0f, angle);
-        Rigidbody[] slices = sliced.GetComponentsInChildren<Rigidbody>();
-        // Add a force to each slice based on the blade direction
+        Quaternion rotation = Quaternion.LookRotation(position);
+        GameObject slicedFruit = Instantiate(sliced, transform.position, rotation);
+        Rigidbody[] slices = slicedFruit.GetComponentsInChildren<Rigidbody>();
+        //Add a force to each slice based on the blade direction
         foreach (Rigidbody slice in slices)
         {
             slice.velocity = fruitRigidbody.velocity;
             slice.AddForceAtPosition(direction * force, position, ForceMode.Impulse);
         }
+        Destroy(slicedFruit, 3f);
+        Destroy(gameObject);
     }
 
     void fill_n()
@@ -95,7 +97,7 @@ public class Fruit : MonoBehaviour
             {
                 ++nbrSliced;
                 Slice(blade.direction, blade.transform.position, blade.sliceForce);
-                // Destroy(gameObject);
+                //Destroy(gameObject);
                 allPosfruit.Remove(this.transform.position);
                 --nbrFruit;
                 Debug.Log("The player removed " + this.transform.position);
@@ -112,7 +114,7 @@ public class Fruit : MonoBehaviour
     {
         Debug.Log("Computer select: " + nbrChoosenComputer);
         Slice(new Vector3(0f, 0f, 0f), gameObject.transform.position, 25f);
-        // Destroy(gameObject);
+        //Destroy(gameObject);
         --nbrFruit;
         Debug.Log("remaining after computerTurn" + nbrFruit);
     }
