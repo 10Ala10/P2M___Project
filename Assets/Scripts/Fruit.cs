@@ -18,15 +18,6 @@ public class Fruit : MonoBehaviour
     public bool finishCLick = false;
     private ParticleSystem juiceEffect;
     public static int nbrChoosenComputer = 0;
-    public static List<Vector3> allPosfruit = new List<Vector3>(){
-        new Vector3(0,0,0),
-        new Vector3(-10.49f,0,0),
-        new Vector3(0,4f,0),
-        new Vector3(0,8.5f,0),
-        new Vector3(0f,6.5f,0f),
-        new Vector3(0,-4f,0f),
-        new Vector3(-10f,-4f,0f),
-    };
     public List<GameObject> allFruit;
     private void Awake()
     {
@@ -44,7 +35,6 @@ public class Fruit : MonoBehaviour
         {
             computerTurn();
             --nbrChoosenComputer;
-
         }
         if (nbrChoosenComputer == 0)
         {
@@ -98,7 +88,6 @@ public class Fruit : MonoBehaviour
                 ++nbrSliced;
                 Slice(blade.direction, blade.transform.position, blade.sliceForce);
                 //Destroy(gameObject);
-                allPosfruit.Remove(this.transform.position);
                 --nbrFruit;
                 Debug.Log("The player removed " + this.transform.position);
                 Debug.Log("remaining after playerTurn :" + nbrFruit);
@@ -113,7 +102,7 @@ public class Fruit : MonoBehaviour
     void computerTurn()
     {
         Debug.Log("Computer select: " + nbrChoosenComputer);
-        Slice(new Vector3(0f, 0f, 0f), gameObject.transform.position, 25f);
+        Slice(new Vector3(5f, 2f, 0f), gameObject.transform.position, 2f);
         //Destroy(gameObject);
         --nbrFruit;
         Debug.Log("remaining after computerTurn" + nbrFruit);
