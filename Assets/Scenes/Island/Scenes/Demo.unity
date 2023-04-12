@@ -1045,7 +1045,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ba571c0414e05468e4d719b8d183e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinPrefabs: []
+  coinPrefabs:
+  - {fileID: 8786210508639339982, guid: fe0c9ea3a0019734bbc3bc228058596e, type: 3}
+  - {fileID: 5958588115992009660, guid: 9b26a6dc88cad8849b0396c87c7a3881, type: 3}
+  - {fileID: 5958588115992009660, guid: c665c494db8dbc94b9e44fa30586e11c, type: 3}
+  - {fileID: 5958588115992009660, guid: c020ddaec723ef14bba2e3cdaeb6b6fa, type: 3}
+  - {fileID: 5958588115992009660, guid: 741ad6c0ec98f314fa82bdbf04074747, type: 3}
+  - {fileID: 5958588115992009660, guid: b71dadaf864cd2a47bf9c38350fedf1d, type: 3}
+  - {fileID: 5958588115992009660, guid: 3b57060cd3a11e34993d6af8dadf163c, type: 3}
   coinModel: {fileID: 5958588115992009660, guid: 9b26a6dc88cad8849b0396c87c7a3881, type: 3}
   finishButton: {fileID: 715070505}
   checkFirstPlayer: {fileID: 514055543}
@@ -2214,7 +2221,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ba571c0414e05468e4d719b8d183e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinPrefabs: []
+  coinPrefabs:
+  - {fileID: 8786210508639339982, guid: fe0c9ea3a0019734bbc3bc228058596e, type: 3}
+  - {fileID: 5958588115992009660, guid: 9b26a6dc88cad8849b0396c87c7a3881, type: 3}
+  - {fileID: 5958588115992009660, guid: c665c494db8dbc94b9e44fa30586e11c, type: 3}
+  - {fileID: 5958588115992009660, guid: c020ddaec723ef14bba2e3cdaeb6b6fa, type: 3}
+  - {fileID: 5958588115992009660, guid: 741ad6c0ec98f314fa82bdbf04074747, type: 3}
+  - {fileID: 5958588115992009660, guid: b71dadaf864cd2a47bf9c38350fedf1d, type: 3}
+  - {fileID: 5958588115992009660, guid: 3b57060cd3a11e34993d6af8dadf163c, type: 3}
   coinModel: {fileID: 5958588115992009660, guid: 9b26a6dc88cad8849b0396c87c7a3881, type: 3}
   finishButton: {fileID: 715070505}
   checkFirstPlayer: {fileID: 514055543}
@@ -2941,7 +2955,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ba571c0414e05468e4d719b8d183e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinPrefabs: []
+  coinPrefabs:
+  - {fileID: 8786210508639339982, guid: fe0c9ea3a0019734bbc3bc228058596e, type: 3}
+  - {fileID: 5958588115992009660, guid: 9b26a6dc88cad8849b0396c87c7a3881, type: 3}
+  - {fileID: 5958588115992009660, guid: c665c494db8dbc94b9e44fa30586e11c, type: 3}
+  - {fileID: 5958588115992009660, guid: c020ddaec723ef14bba2e3cdaeb6b6fa, type: 3}
+  - {fileID: 5958588115992009660, guid: 741ad6c0ec98f314fa82bdbf04074747, type: 3}
+  - {fileID: 5958588115992009660, guid: b71dadaf864cd2a47bf9c38350fedf1d, type: 3}
+  - {fileID: 5958588115992009660, guid: 3b57060cd3a11e34993d6af8dadf163c, type: 3}
   coinModel: {fileID: 5958588115992009660, guid: 9b26a6dc88cad8849b0396c87c7a3881, type: 3}
   finishButton: {fileID: 715070505}
   checkFirstPlayer: {fileID: 514055543}

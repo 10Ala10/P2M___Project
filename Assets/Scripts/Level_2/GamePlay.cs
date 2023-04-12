@@ -36,7 +36,6 @@ public class GamePlay : MonoBehaviour{
     private CoinDestruction coinDestruction;
 
     void Start(){
-        HideGameObjects();
         initVariables();
         Invoke("createCoins", Constants.TurnDelay+3);
         createCoins();
