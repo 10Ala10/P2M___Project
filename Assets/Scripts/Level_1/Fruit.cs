@@ -18,7 +18,8 @@ public class Fruit : MonoBehaviour
     public bool finishCLick = false;
     private ParticleSystem juiceEffect;
     public static int nbrChoosenComputer = 0;
-    public List<GameObject> allFruit;
+    public GameObject winUI;
+    public GameObject gameoverUI;
     private void Awake()
     {
         fruitRigidbody = GetComponent<Rigidbody>();
@@ -30,6 +31,10 @@ public class Fruit : MonoBehaviour
     private void Update()
     {
         verif();
+        if (nbrFruit == 0)
+        {
+            winUI.SetActive(true);
+        }
         nbrChoosenComputer = Math.Abs(best_choise(nbrFruit, false));
         if (finishTurn == true)
         {
@@ -41,21 +46,20 @@ public class Fruit : MonoBehaviour
             nbrSliced = 0;
             finishButton.isClicked = false;
         }
+        if (nbrFruit == 0)
+        {
+            gameoverUI.SetActive(true);
+        }
     }
     private void Slice(Vector3 direction, Vector3 position, float force)
     {
-        //FindObjectOfType<GameManager>().IncreaseScore(points);
-        // Disable the whole fruit
         fruitCollider.enabled = false;
         whole.SetActive(false);
-        // Enable the sliced fruit
         sliced.SetActive(true);
         juiceEffect.Play();
-        // Rotate based on the slice angle
         Quaternion rotation = Quaternion.LookRotation(position);
         GameObject slicedFruit = Instantiate(sliced, transform.position, rotation);
         Rigidbody[] slices = slicedFruit.GetComponentsInChildren<Rigidbody>();
-        //Add a force to each slice based on the blade direction
         foreach (Rigidbody slice in slices)
         {
             slice.velocity = fruitRigidbody.velocity;
